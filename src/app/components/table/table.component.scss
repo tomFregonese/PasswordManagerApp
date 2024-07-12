@@ -1,19 +1,20 @@
 table {
   width: 95%;
   border-collapse: collapse;
-  background-color: #f8f9fa;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: transparent;
 
   th, td {
-    padding: 12px 15px;
-    text-align: center;
+    padding: 12px 0px;
+    text-align: left;
     border-bottom: 1px solid #dee2e6;
   }
 
   th {
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
+    background-color: white;
+    color: #84919A;
+    font-size: calc(0.5em + 0.3vw);
+    text-transform: uppercase;
+
   }
 
 

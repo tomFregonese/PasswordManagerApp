@@ -1,7 +1,47 @@
 td {
   font-size: 14px;
   color: #333;
-  text-align: center;
+  text-align: left;
+
+}
+
+td .password {
+  border: none;
+  font-size: 18px;
+  background-color: transparent;
+  color: #000000;
+  &:focus {
+    outline: 0;
+    border:transparent;
+
+  }
+}
+
+td button {
+  background-color: transparent;
+  border: none;
+  color: #000000;
+
+}
+
+
+
+td .edit {
+  &:hover {
+    color: #157f25;
+  }
+}
+
+td .delete {
+  &:hover {
+    color: #dc3545;
+  }
+}
+
+tr{
+  background-color: transparent;
+  border-bottom: 1px solid #dee2e6;
+  height: 6vh;
 
 }
 
