@@ -1,1 +1,25 @@
-<p>login-page works!</p>
+<main role="main">
+
+    <div class="main" *ngIf="loginMode">
+        <form [formGroup]="loginForm" id="login" (ngSubmit)="login()">
+            <h1>Connexion</h1>
+            <input formControlName="password" name="password" type="password" autofocus value=""/>
+            <button name="submit" class="button" >Connexion</button>
+            <ul>
+                <li>
+                    <a href="???">Mot de passe oublié</a>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    <div class="main" *ngIf="!loginMode">
+        <form [formGroup]="createPasswordForm" id="createPassword" (ngSubmit)="createAccount()">
+            <h1>Create a password</h1>
+            <input formControlName="password1" name="password1" type="password" autofocus value=""/>
+            <input formControlName="password2" name="password2" type="password" value=""/>
+            <button name="submit" class="button">Create</button>
+        </form>
+    </div>
+
+</main>
