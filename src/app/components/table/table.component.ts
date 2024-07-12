@@ -19,9 +19,12 @@ export class TableComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.dbService.getAll<Credential>('credential').subscribe(result => (
-      this.tableData = result
-    ))
+    this.dbService.getAll<Credential>('credential').subscribe((credentials: Credential[]) => {
+      this.tableData = credentials
+      console.log(this.tableData)
+    })
+
+
   }
 
 }

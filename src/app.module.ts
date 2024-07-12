@@ -11,7 +11,8 @@ const dbConfig: DBConfig = {
         { name: 'username', keypath: 'username', options: { unique: false } },
         { name: 'websiteUrl', keypath: 'websiteUrl', options: { unique: false } },
         { name: 'password', keypath: 'password', options: { unique: false } },
-        { name: 'description', keypath: 'description', options: { unique: false } }
+        { name: 'description', keypath: 'description', options: { unique: false } },
+        { name: 'modificationDate', keypath: 'modificationDate', options: { unique: false } }
       ]
     },
     {

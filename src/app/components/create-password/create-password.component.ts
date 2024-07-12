@@ -52,7 +52,8 @@ export class CreatePasswordComponent implements OnInit{
     const credential : Credential = {
       password: this.passwordForm.value.password,
       username: this.passwordForm.value.username,
-      websiteUrl: this.passwordForm.value.websiteUrl
+      websiteUrl: this.passwordForm.value.websiteUrl,
+      modificationDate: new Date()
     }
 
     this.dbService.add<Credential>('credential', credential).subscribe(result => {
