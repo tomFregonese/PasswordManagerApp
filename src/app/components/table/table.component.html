@@ -1,0 +1,13 @@
+<table>
+  <thead>
+    <tr>
+      <th>Website</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Modification Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <app-table-row *ngFor="let row of tableData" [rowData]="row"></app-table-row>
+  </tbody>
+</table>
