@@ -21,16 +21,10 @@ export class AppComponent {
   title = 'passwordManagerApp';
 
   constructor(private dialog: MatDialog, private dbService: NgxIndexedDBService) {
-    this.dbService.selectDb("sky-explorer")
-    this.dbService.getAll('credential').subscribe(result => {
-      console.log(result)
-    })
+
   }
 
   openDialog(){
-    const dialogRef= this.dialog.open(CreatePasswordComponent, {data: {name: "Fatim"}});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-    })
+    this.dialog.open(CreatePasswordComponent);
   }
 }

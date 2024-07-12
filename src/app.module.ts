@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 
 const dbConfig: DBConfig = {
-  name: 'sky-explorer',
+  name: 'pass-protector',
   objectStoresMeta: [
     {
       store: 'credential',
       storeConfig: { keyPath: 'id', autoIncrement: true },
       storeSchema: [
         { name: 'username', keypath: 'username', options: { unique: false } },
-        { name: 'websiteUrl', keypath: 'websiteUrl', options: { unique: true } },
-        { name: 'password', keypath: 'password', options: { unique: true } },
+        { name: 'websiteUrl', keypath: 'websiteUrl', options: { unique: false } },
+        { name: 'password', keypath: 'password', options: { unique: false } },
         { name: 'description', keypath: 'description', options: { unique: false } }
       ]
     },
