@@ -1,6 +1,8 @@
-import { Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { TableRowComponent } from '../table-row/table-row.component';
 import { CommonModule } from '@angular/common';
+import {NgxIndexedDBService} from "ngx-indexed-db";
+import {Credential} from "../../models/credential.model";
 
 @Component({
   selector: 'app-table',
@@ -9,11 +11,17 @@ import { CommonModule } from '@angular/common';
   standalone: true, imports: [TableRowComponent, CommonModule],
 
 })
+export class TableComponent implements OnInit{
+  tableData: Credential[] = []
 
+  constructor(private dbService: NgxIndexedDBService) {
+    this.dbService.selectDb('pass-protector')
+  }
 
-export class TableComponent {
-  tableData = [
-    { website:'test.com', username: 'manhhackt08@gmail.com', password: 'password1', modificationDate: 'Dec 29, 09:42 PM' },
-    { website:'test.com', username: 'trungkienspkntd@gmail.com', password: 'password2', modificationDate: 'Dec 29, 09:42 PM'},
-  ];
+  ngOnInit() {
+    this.dbService.getAll<Credential>('credential').subscribe(result => (
+      this.tableData = result
+    ))
+  }
+
 }

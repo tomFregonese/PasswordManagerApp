@@ -4,4 +4,5 @@ export interface Credential {
     username: string;
     password: string;
     description?: string;
+    modificationDate?: Date
 }

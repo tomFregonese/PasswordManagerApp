@@ -8,7 +8,7 @@ import {NgxIndexedDBService} from "ngx-indexed-db";
 
 @Component({
   imports: [
-    // RouterOutlet,
+    RouterOutlet,
     MatButton,
     AppModule
   ],
@@ -22,9 +22,5 @@ export class AppComponent {
 
   constructor(private dialog: MatDialog, private dbService: NgxIndexedDBService) {
 
-  }
-
-  openDialog(){
-    this.dialog.open(CreatePasswordComponent);
   }
 }
