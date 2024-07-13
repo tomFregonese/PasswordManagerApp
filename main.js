@@ -29,7 +29,7 @@ function createWindow() {
   // });
 
 // Charger le fichier index.html de l'application Angular
-  mainWindow.loadURL('http://localhost:4200'); // L'URL de l'application Angular en mode de développement
+  mainWindow.loadURL('http://localhost:4200/dashboard'); // L'URL de l'application Angular en mode de développement
 
   mainWindow.on('closed', function () {
     mainWindow = null;
