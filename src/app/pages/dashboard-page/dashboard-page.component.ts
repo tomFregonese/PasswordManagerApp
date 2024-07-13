@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component';
+import {MatDialog} from '@angular/material/dialog';
+import {CredentialCreationComponent} from '../../components/credential-creation/credential-creation.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -10,6 +12,10 @@ import { TableComponent } from '../../components/table/table.component';
 
 
 export class DashboardPageComponent {
+
+  constructor(private dialog: MatDialog) {
+  }
+
   searchTerm: string = '';
 
 
@@ -21,7 +27,8 @@ export class DashboardPageComponent {
     // Implement your export passwords logic here
   }
 
-  createPassword(): void {
-    // Implement your create password logic here
+  createCredential(){
+    this.dialog.open(CredentialCreationComponent);
   }
+
 }
