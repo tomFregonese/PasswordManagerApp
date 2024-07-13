@@ -1,7 +1,8 @@
 export interface Credential {
-    id: number;
+    id?: number;
     websiteUrl: string;
     username?: string;
     password: string;
     description?: string;
+    modificationDate: Date
 }
