@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TableComponent } from '../../components/table/table.component';
 import {MatDialog} from '@angular/material/dialog';
 import {CredentialCreationComponent} from '../../components/credential-creation/credential-creation.component';
+import {IdleService} from '../../services/idle.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -10,10 +12,18 @@ import {CredentialCreationComponent} from '../../components/credential-creation/
   standalone: true, imports: [TableComponent]
 })
 
+export class DashboardPageComponent implements OnInit, OnDestroy {
 
-export class DashboardPageComponent {
+  constructor(private dialog: MatDialog,
+              private authService: AuthService,
+              private idleService: IdleService) { }
 
-  constructor(private dialog: MatDialog) {
+  ngOnInit(): void {
+    this.idleService.startWatching();
+  }
+
+  ngOnDestroy(): void {
+    this.idleService.stopWatching();
   }
 
   searchTerm: string = '';
@@ -31,4 +41,7 @@ export class DashboardPageComponent {
     this.dialog.open(CredentialCreationComponent);
   }
 
+  logout() {
+    this.authService.logout()
+  }
 }
