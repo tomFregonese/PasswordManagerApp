@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Credential} from "../../models/credential.model";
 import {DatePipe} from "@angular/common";
 import {NgxIndexedDBService} from "ngx-indexed-db";
@@ -20,6 +20,25 @@ export class TableRowComponent {
 
   constructor(private dbService: NgxIndexedDBService, private dialog: MatDialog,) {
     this.dbService.selectDb('pass-protector')
+  }
+
+  displayPassword(event: MouseEvent) {
+    const inputElement = event.target as HTMLInputElement;
+    inputElement.type = 'text'
+  }
+
+  hidePassword(event: MouseEvent) {
+    const inputElement = event.target as HTMLInputElement;
+    inputElement.type = 'password';
+  }
+
+  copyToClipboard(event: MouseEvent) {
+    const inputElement = event.target as HTMLInputElement;
+    navigator.clipboard.writeText(inputElement.value).then(() => {
+      console.log('Password copied to clipboard');
+    }).catch(err => {
+      console.error('Failed to copy password: ', err);
+    });
   }
 
   deleteCredential(id: number | undefined){

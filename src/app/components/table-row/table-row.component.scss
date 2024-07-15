@@ -5,16 +5,18 @@ td {
 
 }
 
-td .password {
+input {
   border: none;
-  font-size: 18px;
   background-color: transparent;
   color: #000000;
   &:focus {
     outline: 0;
     border:transparent;
-
   }
+}
+
+.password {
+  font-size: 18px;
 }
 
 td button {
