@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, Output} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {
   MAT_DIALOG_DATA, MatDialogActions, MatDialogClose,
   MatDialogContent,
@@ -17,7 +17,6 @@ import {AppModule} from "../../app.module";
   selector: 'app-credential-creation',
   standalone: true,
   imports: [
-    // BrowserAnimationsModule,
     ReactiveFormsModule,
     CommonModule,
     MatDialogTitle,
@@ -57,7 +56,7 @@ export class CredentialCreationComponent implements OnInit{
     }
 
     this.dbService.add<Credential>('credential', credential).subscribe(result => {
-      console.log(result)
+      location.reload()
     })
   }
 }
