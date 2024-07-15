@@ -1,7 +1,7 @@
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import * as bcrypt from 'bcryptjs';
 import {isPlatformBrowser} from '@angular/common';
 import {Router} from '@angular/router';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable({
   providedIn: 'root'
