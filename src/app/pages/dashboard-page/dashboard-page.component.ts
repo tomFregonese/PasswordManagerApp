@@ -4,6 +4,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {CredentialCreationComponent} from '../../components/credential-creation/credential-creation.component';
 import {IdleService} from '../../services/idle.service';
 import {AuthService} from '../../services/auth.service';
+import {Credential} from '../../models/credential.model';
+import {NgxIndexedDBService} from 'ngx-indexed-db';
+import {ExportService} from '../../services/export.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -16,7 +19,11 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   constructor(private dialog: MatDialog,
               private authService: AuthService,
-              private idleService: IdleService) { }
+              private idleService: IdleService,
+              private dbService: NgxIndexedDBService,
+              private exportService: ExportService) {
+      this.dbService.selectDb('pass-protector')
+  }
 
   ngOnInit(): void {
     this.idleService.startWatching();
@@ -34,7 +41,10 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   }
 
   exportPasswords(): void {
-    // Implement your export passwords logic here
+    this.dbService.getAll<Credential>('credential').subscribe((credentials: Credential[]) => {
+      this.exportService.exportToCsv(credentials)
+    })
+
   }
 
   createCredential(){
