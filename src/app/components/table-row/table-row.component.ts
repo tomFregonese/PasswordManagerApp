@@ -26,7 +26,7 @@ export class TableRowComponent {
     const messageConfirm = confirm("Voulez-vous supprimer ce mot de passe ?")
     if(id && messageConfirm){
       this.dbService.deleteByKey('credential', id).subscribe(() => {
-        alert("Le mot de passe a été supprimé aec succès !")
+        alert("Le mot de passe a été supprimé avec succès !")
         location.reload()
       })
     }
@@ -34,5 +34,6 @@ export class TableRowComponent {
 
   editCredential(id: number | undefined){
     this.dialog.open(CredentialEditComponent, {data: this.rowData})
+    console.log(this.rowData)
   }
 }
