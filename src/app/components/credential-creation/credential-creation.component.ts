@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {
   MAT_DIALOG_DATA, MatDialogActions, MatDialogClose,
   MatDialogContent,
@@ -31,32 +31,67 @@ import {AppModule} from "../../app.module";
   styleUrl: './credential-creation.component.scss'
 })
 export class CredentialCreationComponent implements OnInit{
+  protected update: boolean = false
+  @Input() credential : Credential | undefined
 
-  passwordForm!: FormGroup
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private builder: FormBuilder, private dbService: NgxIndexedDBService) {
+  credentialForm!: FormGroup
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Credential,
+              private builder: FormBuilder,
+              private dbService: NgxIndexedDBService) {
     this.dbService.selectDb("pass-protector")
-
   }
 
   ngOnInit(): void {
-    this.passwordForm = this.builder.group({
-      username: ["", Validators.required],
-      websiteUrl: ["", Validators.required],
-      password: ["", Validators.required],
-      description: [""]
+    this.credential = this.data
+    if (this.credential?.id !== undefined) {
+      this.update = true
+    }
+    this.credentialForm = this.builder.group({
+      username: [this.credential?.username, Validators.required],
+      websiteUrl: [this.credential?.websiteUrl, Validators.required],
+      password: [this.credential?.password, Validators.required],
+      description: [this.credential?.description]
     })
   }
+
+  validate(): void {
+    if (this.update) {
+        this.editPassword();
+    } else {
+      this.createPassword()
+    }
+  }
+
 
   createPassword(){
     const credential : Credential = {
-      password: this.passwordForm.value.password,
-      username: this.passwordForm.value.username,
-      websiteUrl: this.passwordForm.value.websiteUrl,
+      password: this.credentialForm.value.password,
+      username: this.credentialForm.value.username,
+      websiteUrl: this.credentialForm.value.websiteUrl,
       modificationDate: new Date()
     }
 
-    this.dbService.add<Credential>('credential', credential).subscribe(result => {
+    this.dbService.add<Credential>('credential', credential).subscribe(() => {
       location.reload()
     })
   }
+
+
+  editPassword(){
+    if(this.credential?.id !== undefined){
+      const newCredential: Credential = {
+        id: this.data.id,
+        modificationDate: new Date(),
+        username: this.credentialForm.value.username,
+        password: this.credentialForm.value.password,
+        websiteUrl: this.credentialForm.value.websiteUrl,
+        description: this.credentialForm.value.description
+      }
+      this.dbService.update<Credential>('credential', newCredential).subscribe(() => {
+        alert("Password successfully updated!")
+        location.reload()
+      })
+    }
+  }
+
 }

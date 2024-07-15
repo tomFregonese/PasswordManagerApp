@@ -4,7 +4,7 @@ import {DatePipe} from "@angular/common";
 import {NgxIndexedDBService} from "ngx-indexed-db";
 import {AppModule} from "../../app.module";
 import {MatDialog} from "@angular/material/dialog";
-import {CredentialEditComponent} from "../credential-edit/credential-edit.component";
+import {CredentialCreationComponent} from '../credential-creation/credential-creation.component';
 
 @Component({
   selector: 'app-table-row',
@@ -23,17 +23,17 @@ export class TableRowComponent {
   }
 
   deleteCredential(id: number | undefined){
-    const messageConfirm = confirm("Voulez-vous supprimer ce mot de passe ?")
+    const messageConfirm = confirm("Are you sure to delete this credential?")
     if(id && messageConfirm){
       this.dbService.deleteByKey('credential', id).subscribe(() => {
-        alert("Le mot de passe a été supprimé avec succès !")
         location.reload()
+        alert("Password successfully deleted!")
       })
     }
   }
 
   editCredential(id: number | undefined){
-    this.dialog.open(CredentialEditComponent, {data: this.rowData})
+    this.dialog.open(CredentialCreationComponent, {data: this.rowData})
     console.log(this.rowData)
   }
 }
