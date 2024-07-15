@@ -1,6 +1,7 @@
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import * as bcrypt from 'bcryptjs';
 import {isPlatformBrowser} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class AuthService {
   private storageKey = 'appPasswordHash';
   private tempPassword: string = 'tempPassword'
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  constructor(@Inject(PLATFORM_ID) private platformId: object,
+              private router: Router) {
 
   }
 
@@ -22,8 +24,6 @@ export class AuthService {
   checkPassword(password: string): boolean {
     const storedHash = localStorage.getItem(this.storageKey);
     if (storedHash) {
-      console.log('storedHash', storedHash)
-      console.log('password', password)
       return bcrypt.compareSync(password, storedHash);
     }
     return false;
@@ -38,5 +38,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.tempPassword);
+    this.router.navigate(['/login']).then();
   }
 }
