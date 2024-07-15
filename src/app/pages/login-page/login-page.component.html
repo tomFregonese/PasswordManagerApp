@@ -2,9 +2,10 @@
 
     <div class="main" *ngIf="loginMode">
         <form [formGroup]="loginForm" id="login" (ngSubmit)="login()">
-            <h1>Connexion</h1>
-            <input formControlName="password" name="password" type="password" autofocus value=""/>
-            <button name="submit" class="button" >Connexion</button>
+            <img src="assets/images/streak.png" alt="PassProtector logo" class="logo">
+            <h3>Pass Protector Is Locked</h3>
+            <p>Enter your password to unlock.</p>
+            <input formControlName="password" name="password" type="password" placeholder="Enter password" value=""/>
             <ul>
                 <li>
                     <a href="???">Mot de passe oublié</a>
@@ -15,10 +16,12 @@
 
     <div class="main" *ngIf="!loginMode">
         <form [formGroup]="createPasswordForm" id="createPassword" (ngSubmit)="createAccount()">
-            <h1>Create a password</h1>
-            <input formControlName="password1" name="password1" type="password" autofocus value=""/>
-            <input formControlName="password2" name="password2" type="password" value=""/>
-            <button name="submit" class="button">Create</button>
+          <img src="assets/images/streak.png" alt="PassProtector logo" class="logo">
+
+          <h3>Pass Protector require a password<br><br>Create a password</h3>
+            <input formControlName="password1" name="password1" type="password" placeholder="Password" value=""/>
+            <input formControlName="password2" name="password2" type="password" placeholder="Confirm password" value=""/>
+            <button name="submit" class="button" hidden>Create</button>
         </form>
     </div>
 
