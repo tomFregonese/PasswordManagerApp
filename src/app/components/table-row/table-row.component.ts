@@ -34,6 +34,5 @@ export class TableRowComponent {
 
   editCredential(id: number | undefined){
     this.dialog.open(CredentialCreationComponent, {data: this.rowData})
-    console.log(this.rowData)
   }
 }
