@@ -1,7 +1,7 @@
 <tr>
     <td>{{ rowData.websiteUrl }}</td>
     <td>{{ rowData.username }}</td>
-    <td><input type="password" class="password" value="{{ rowData.password }}" readonly></td>
+    <td><input type="password" class="password" value="{{ rowData.password }}" readonly [size]="myInput.value.length" #myInput></td>
     <td>{{ rowData.modificationDate | date:'medium' }}</td>
     <td>
         <!-- (click)="editRow()"-->
