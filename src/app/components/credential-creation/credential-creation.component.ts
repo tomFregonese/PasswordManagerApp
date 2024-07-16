@@ -94,4 +94,12 @@ export class CredentialCreationComponent implements OnInit{
     }
   }
 
+  auto_grow() {
+    let textArea = document.getElementById('description');
+    if (textArea) {
+      textArea.style.height = 'auto';
+      textArea.style.height = textArea.scrollHeight + 'px';
+    }
+  }
+
 }
