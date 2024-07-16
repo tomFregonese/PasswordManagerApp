@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class IdleService {
   private timeoutId: any;
-  private idleTime: number = 600000; // 1 minute
+  private idleTime: number = 60000; // 1 minute
   private idle$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private ngZone: NgZone) { }

@@ -1,27 +1,69 @@
 # PasswordManagerApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+Ce projet prend place dans le cadre du cours de developpement desktop en bachelor 3.
+Le système de gestion de mots de passe est une application de bureau qui permet de stocker et de gérer les mots de 
+passes d'un utilisateur.
 
-## Development server
+## Contributeurs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Tom FREGONESE**
+- **Enzo CHAMANIER**
+- **Fatim DICKO**
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Table des matières
 
-## Build
+- [Structure du projet](#structure-du-projet)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Structure du projet
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Voici un aperçu de la structure du projet :
 
-## Running end-to-end tests
+```
+   PasswordManagerApp/
+   ├── src/ 
+   │ ├── app/ 
+   │ │ ├── components/
+   │ │ ├── guards/
+   │ │ ├── models/
+   │ │ ├── pages/
+   │ │ ├── services/
+   │ │ ├── app.component(.html .scss .ts)
+   │ │ └── ...
+   │ ├── assets/
+   │ ├── index.html
+   │ ├── main.ts
+   ├── package.json
+   └── README.md
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Installation
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Pour installer et lancer le projet en local, suivez les étapes ci-dessous :
+
+1. Clonez le dépôt :
+   ```bash
+    git clone https://github.com/tomFregonese/PasswordManagerApp.git
+    cd PasswordManagerApp
+   ```
+
+2. Installez les dépendances et lancer l'app :
+
+   ```bash
+    npm install
+    npm run electron
+   ```
+
+3. L'application de bureau doit s'ouvrir.
+
+
+## Utilisation
+
+Les utilisateur doivent renseigner un premier mot de passe pour accéder à l'application.
+Ils peuvent en suite se connecter pour accéder à leur mots de passe, en ajouter de nouveaux, les copier et les exporter.
+
+![Use case diagram](./src/assets/Use_Case_Diagram.png)

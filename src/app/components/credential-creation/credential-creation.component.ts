@@ -72,8 +72,8 @@ export class CredentialCreationComponent implements OnInit{
     }
 
     this.dbService.add<Credential>('credential', credential).subscribe(() => {
-      location.reload()
-    })
+      location.reload() //TODO - Fix the way the table is reloaded to not trigger the event on
+    })                  // dashboard-page.component.ts line 29
   }
 
 
