@@ -26,6 +26,9 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    window.addEventListener('beforeunload', () => {
+      this.authService.logout();
+    });
     this.idleService.startWatching();
   }
 
