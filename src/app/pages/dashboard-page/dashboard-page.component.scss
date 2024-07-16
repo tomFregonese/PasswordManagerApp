@@ -58,6 +58,7 @@ app-table{
   align-items: center;
   gap: 10px;
   margin-top: 20px;
+  padding: 10px 10px 0 10px;
 }
 
 .bottomsidebar button{
@@ -66,8 +67,8 @@ app-table{
   align-items: center;
   background-color: transparent;
   border: none;
-  width: 80%;
-
+  width: 35%;
+  justify-content: center;
   // &:hover{
   //   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   //   padding: 0 10px;
@@ -75,6 +76,11 @@ app-table{
   // }
   svg{
     color: #7c7c7c;
+    min-width: 15px;
+
+    &:hover{
+      color: #0E73F6;
+    }
   }
 }
 
